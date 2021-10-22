@@ -1,0 +1,44 @@
+{
+    "room_id": {
+        "players": ["player1", "player2"],
+        "scores": {
+            "1": {
+                "1": {
+                    "user": "player1",
+                    "point": 12
+                },
+                "2": {
+                    "user": "player1",
+                    "point": 21
+                },
+                "3": {
+                    "user": "player2",
+                    "point": 13
+                }
+            }
+        },
+        "status": {
+            "complete": false,
+            "season": 2,
+            "round": 1,
+            "scores": {
+                "1": "player2",
+                "2": "player2",
+                "3": "player2"
+            }
+        },
+        "chat": {
+            "1230982": {
+                "user": "player1",
+                "msg": "ki hal!"
+            }
+        },
+        "result": {
+            "win": "player1",
+            "scores": {    
+                "player1": 12,
+                "player2": 11
+            }
+        }
+    }
+}

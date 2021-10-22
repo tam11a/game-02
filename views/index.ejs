@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Rock Paper Scissors</title>
+    <link rel="shortcut icon" href="tic-tac-toe.png" type="image/png">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script>
+        if(window.localStorage.getItem('token')){
+            window.location.href = '/menu';
+        }
+    </script>
+</head>
+<body>
+    <div class="container grid">
+        <div class="flex-col">
+            <div class="t3-icon splash-icon"></div>
+            <h1>Rock Paper Scissors</h1>
+        </div>
+        <button class="primary-btn" onclick="document.querySelector('.login-page').classList.add('show')">Get Started</button>
+    </div>
+    <div class="container reg-page grid login-page login-form">
+        <div class="flex-col">
+            <i class="material-icons clsreg" onclick="document.querySelector('.login-page').classList.remove('show')">close</i>
+            <input type="text" class="primary-input sx le" name="email" placeholder="Username">
+            <input type="password" class="primary-input lp" name="password" placeholder="Password">
+            <p class="reg-warn login-error">Invalid Username or Password!!</p>
+        </div>
+        <div>
+            <button class="primary-btn" onclick="login()">Sign In</button>
+            <button class="primary-btn" onclick="document.querySelector('.login-page').classList.remove('show'); document.querySelector('.create-account-page').classList.add('show');">Create New Account</button>
+        </div>
+    </div>
+    <div class="container reg-page create-account-page grid">
+        <div class="flex-col">
+            <i class="material-icons clsreg" onclick="document.querySelector('.create-account-page').classList.remove('show')">close</i>
+            <input type="text" class="primary-input sx ce" placeholder="Username">
+            <input type="password" class="primary-input cp" placeholder="Password">
+            <input type="password" class="primary-input ccp" placeholder="Confirm Password">
+            <p class="reg-warn create-error">The Username is Taken!!</p>
+        </div>
+        <div>
+            <button class="primary-btn" onclick="create()">Sign Up</button>
+            <button class="primary-btn" onclick="document.querySelector('.create-account-page').classList.remove('show'); document.querySelector('.login-page').classList.add('show'); ">Already Have An Account</button>
+        </div>
+    </div>
+    <script>
+        const login = () => {
+            const data = {
+            email: document.querySelector('.le').value,
+            password: document.querySelector('.lp').value
+        }
+        fetch("./login",
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if(data["status"] === "Success"){
+                    window.localStorage.setItem('token', data['token']);
+                    window.location.href = '/menu';
+                } else {
+                    document.querySelector(".login-error").classList.add("show");
+                }
+            });
+        }
+
+        const create = () => {
+            const data = {
+            email: document.querySelector('.ce').value,
+            password: document.querySelector('.cp').value,
+            cpassword: document.querySelector('.ccp').value,
+        }
+        fetch("./register",
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if(data["status"] === "Success"){
+                    window.localStorage.setItem('token', data['token']);
+                    window.location.href = '/menu';
+                } else {
+                    document.querySelector(".create-error").innerHTML = data["message"];
+                    document.querySelector(".create-error").classList.add("show");
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Rock Paper Scissors</title>
+    <link rel="shortcut icon" href="tic-tac-toe.png" type="image/png">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<body>
+    <div class="container flex-col">
+        <div class="nav flex">
+            <div class="gamebtn on" onclick="toGamePage()">Game <span></span></div>
+            <div class="chatbtn" onclick="toChatPage()">Chat <span>(2)</span></div>
+        </div>
+        <div class="con-body">
+            <div class="game-page flex-col">
+                <h1 class="tac rnd">Season <span>03</span></h1>
+                <div class="pointzone flex maxcon">
+                    <div class="flex-col">
+                        <h1>04</h1>
+                        <p>Tam11a</p>
+                    </div>
+                    <div class="flex-col">
+                        <h1>07</h1>
+                        <p>Shunno</p>
+                    </div>
+                </div>
+                <div class="waiting-zone grid">
+                    <h1>Press Your Move</h1>
+                    <h2 class="show">Waiting For <span>Shunno</span>..</h2>
+                </div>
+                <div class="opponent-action flex-center">
+                    <img src="paper.png">
+                </div>    
+                <div class="choice-list flex maxcon">
+                    <div class="grid pressed">
+                        <div class="selected"></div>
+                        <img src="rock.png">
+                    </div>
+                    <div class="grid">
+                        <div class="selected"></div>
+                        <img src="paper.png">
+                    </div>
+                    <div class="grid">
+                        <div class="selected"></div>
+                        <img src="scissor.png">
+                    </div>
+                </div>
+            </div>
+            <div class="chat-page flex-col">
+                <div class="chat-area maxcon">
+                    <div class="msg update">
+                        Shunno Joined The Game
+                    </div>
+                    <div class="msg">
+                        hello
+                    </div>
+                    <div class="msg own">
+                        hello world
+                    </div>
+                </div>
+                <form action="" class="maxcon flex">
+                    <input type="text" placeholder="Aa..">
+                    <button type="submit" class="material-icons primary-btn">keyboard_arrow_right</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        gamepage = true;
+        chatpage = false;
+        const toChatPage = () => {
+            if(gamepage){
+                document.querySelector(".gamebtn").classList.remove("on");
+                document.querySelector(".chatbtn").classList.add("on");
+                gamepage = false;
+                chatpage = true;
+                document.querySelector(".chatbtn > span").innerHTML = "";
+                document.querySelector(".chat-page").classList.add("show");
+            }
+        }
+        const toGamePage = () => {
+            if(chatpage){
+                document.querySelector(".gamebtn").classList.add("on");
+                document.querySelector(".chatbtn").classList.remove("on");
+                gamepage = true;
+                chatpage = false;
+                document.querySelector(".gamebtn > span").innerHTML = "";
+                document.querySelector(".chat-page").classList.remove("show");
+            }
+        }
+    </script>
+</body>
+</html>

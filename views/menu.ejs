@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Menu | Rock Paper Scissors</title>
+    <link rel="shortcut icon" href="tic-tac-toe.png" type="image/png">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="session.js"></script>
+    <script>
+        
+    </script>
+</head>
+<body>
+    <div class="container grid">
+        <div class="flex-col">
+            <div class="t3-icon splash-icon"></div>
+            <h1>Tic Tac Toe</h1>
+        </div>
+        <div>
+            <a href="/profile">
+                <div class="primary-btn">Profile</div>
+            </a>
+            <button class="primary-btn" onclick="document.querySelector('.host-page').classList.add('show')">Host</button>
+            <button class="primary-btn" onclick="document.querySelector('.join-page').classList.add('show')">Join A Game</button>
+        </div>
+    </div>
+    <div class="container reg-page host-page grid">
+        <div class="flex-col">
+            <i class="material-icons clsreg" onclick="document.querySelector('.host-page').classList.remove('show')">close</i>
+            <h3 class="tac">Copy The Game Room URL and Share With Your Friend to Join.</h3>
+        </div>
+        <div>
+            <button class="primary-btn flex-center"> <span class="material-icons">content_copy</span> Copy URL</button>
+            <button class="primary-btn">Start Game</button>
+        </div>
+    </div>
+    <div class="container reg-page join-page grid">
+        <div class="flex-col">
+            <i class="material-icons clsreg" onclick="document.querySelector('.join-page').classList.remove('show')">close</i>
+            <input type="text" class="primary-input sx" placeholder="Game Room URL">
+            <p class="reg-warn">Failed: The Room Is Full</p>
+        </div>
+        <a href="game.html"><button class="primary-btn">Join Game</button></a>
+    </div>
+</body>
+</html>

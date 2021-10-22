@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Profile | Rock Paper Scissors</title>
+    <link rel="shortcut icon" href="tic-tac-toe.png" type="image/png">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="session.js"></script>
+</head>
+<body>
+    <div class="container grid">
+        <div class="flex-col">
+            <h1 class="uname">Profile</h1>
+        </div>
+        <div>
+            <a href="/menu">
+                <div class="primary-btn">Dashboard</div>
+            </a>
+            <button class="primary-btn" onclick="logout()">Logout</button>
+        </div>
+    </div>
+    <script>
+        document.querySelector(".uname").innerHTML = u_info.u_name;
+    </script>
+</body>
+</html>
